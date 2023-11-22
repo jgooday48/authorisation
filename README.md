@@ -7,7 +7,7 @@
 ### Setting up a Database Instance
 - Create a database instance on ElephantSQL (https://www.elephantsql.com/; ignore messages that ask for your payment details, as it is free to use up to 20MB)
 - Run `touch .env` in the console (must be in the api directory)
-- Copy and paste `PORT=3000` and `DB_URL=` into the .env file (each on a separate line)
+- Copy and paste `PORT=3000`, `BCRYPT_SALT_ROUNDS=12` and `DB_URL=` into the .env file (each on a separate line)
 - Go into the details section of your ElephantSQL instance by clicking on the hyperlink of the instance in the Name column on the instances page
 - Copy and paste the URL of your ElephantSQL instance to the right of `DB_URL=` in the .env file
 - Run `npm run setup-db` in the console to seed your database instance
