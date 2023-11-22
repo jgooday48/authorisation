@@ -1,7 +1,6 @@
 
-const logout = document.querySelector('#logout')
-logout.addEventListener("click", async (e) => {
-    e.preventDefault();
+
+document.getElementById('log-out').addEventListener("click", async (e) => {
     fetch('http://localhost:3000/tokens/' + localStorage.getItem("token"), {
         method: 'DELETE',
     })
