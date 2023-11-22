@@ -32,7 +32,7 @@ class Token {
         }
     }
 
-    static async getOneByToken(token) {
+    static async getOneByToken(token) {// gets entire token string
         const response = await db.query("SELECT * FROM token WHERE token = $1", [token]);
         if (response.rows.length != 1) {
             throw new Error("Unable to locate token.");
@@ -41,7 +41,7 @@ class Token {
         }
     }
 
-     async removeToken() {
+     async removeToken() {// removes token via whole token string
         const response = await db.query("DELETE FROM token WHERE token =$1 RETURNING *", [this.token])
         return new Token(response.rows[0])
     }

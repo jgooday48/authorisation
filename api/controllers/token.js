@@ -1,7 +1,7 @@
 const Token = require('../models/token')
 
 
-async function index(req,res) {
+async function index(req,res) {// displays all tokens
     try {
         const tokens = await Token.getAll()
         res.status(200).json(tokens)
@@ -12,7 +12,7 @@ async function index(req,res) {
     }
 }
 
-async function logOut(req,res) {
+async function logOut(req,res) {// removes token when a user logs out
 
     try {
         const token = req.params.token
