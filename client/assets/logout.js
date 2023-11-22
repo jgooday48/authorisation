@@ -1,22 +1,13 @@
 
-const nav = document.querySelector('nav')
-nav.addEventListener("click", async (e) => {
+const logout = document.querySelector('#logout')
+logout.addEventListener("click", async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token")
-    const options = {
-        method: "DELETE",
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    }
-
-    const response = await fetch("http://localhost:3000/users/logout", options);
-
+    fetch('http://localhost:3000/tokens/' + localStorage.getItem("token"), {
+        method: 'DELETE',
+    })
+        .then(res => res.text())
+        .then(res => console.log(res))
 
     localStorage.removeItem("token")
-    // window.location.assign('index.html')
-
 
 })

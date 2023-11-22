@@ -10,7 +10,10 @@ class Token {
         this.token = token;
     }
 
-
+    static async getAll() {
+        const response = await db.query("SELECT * FROM token")
+        return response.rows.map(g => new Token(g));
+    }
     static async create(user_id) {
         const token = uuidv4();
         const response = await db.query("INSERT INTO token (user_id, token) VALUES ($1, $2) RETURNING token_id;",
@@ -39,7 +42,7 @@ class Token {
     }
 
      async removeToken() {
-        const response = await db.query("DELETE FROM token WHERE id =$1", [this.id])
+        const response = await db.query("DELETE FROM token WHERE token =$1 RETURNING *", [this.token])
         return new Token(response.rows[0])
     }
 

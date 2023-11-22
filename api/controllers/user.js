@@ -43,23 +43,7 @@ async function login (req, res) {
     }
 }
 
-async function logOut(req,res) {
-
-    try {
-        const data = req.body
-        const id = parseInt(req.params.id)
-        const token = await Token.getOneById(id)
-        const deletedToken = await token.removeToken()
-        res.status(204).end()
-        
-    } catch (err) {
-        res.status(404).send({error:err.message})
-        
-    }
-
-
-}
 
 module.exports = {
-    register, login, logOut
+    register, login
 }                           
